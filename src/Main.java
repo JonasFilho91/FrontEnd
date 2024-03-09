@@ -5,7 +5,5 @@ public class Main {
 
         FrameCustomerRegistration jFrameCustomerRegistration = new FrameCustomerRegistration();
 
-
-
     }
 }

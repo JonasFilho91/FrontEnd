@@ -13,15 +13,17 @@ public FrameCustomerRegistration (){
     setTitle("Cadastro de Clientes");
     setLayout(null);
 
+
+
     JButton ButtonClear = new JButton("Limpar");
-    ButtonClear.setBounds(100, 400, 90, 25);
+    ButtonClear.setBounds(500, 400, 90, 25);
     ButtonClear.setBackground(new Color(240, 190, 35));
     add(ButtonClear);
 
 
     JButton ButtonSalve = new JButton("Salvar");
-    ButtonClear.setBounds(600, 400, 90, 25);
-    ButtonClear.setBackground(new Color(30, 120, 105));
+    ButtonSalve.setBounds(600, 400, 90, 25);
+    ButtonSalve.setBackground(new Color(30, 120, 105));
     add(ButtonSalve);
 
 
