@@ -3,14 +3,11 @@ package FrontEnd;
 import javax.swing.*;
 import java.awt.*;
 
-public class jInternalFrameCustomerSearch extends JInternalFrame{
-    public jInternalFrameCustomerSearch(){
-        //Configurações da Janela
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);
+public class jPanelCustomerSearch extends JPanel{
+    public jPanelCustomerSearch(){
+        //Configurações da Painel
         setSize(800,500);
-        setResizable(false);
-        setTitle("Registro de clientes");
+        setName("Filtrar Registros");
         setLayout(null);
 
         //Criação dos componentes

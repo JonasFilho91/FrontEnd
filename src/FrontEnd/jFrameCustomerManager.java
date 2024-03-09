@@ -13,11 +13,9 @@ public class jFrameCustomerManager extends JFrame {
         setTitle("Registro de clientes");
         setLayout(null);
 
-        jInternalFrameCustomerRegistration WindCustomerRegistration = new jInternalFrameCustomerRegistration();
-        jInternalFrameCustomerSearch WindCustomerSearch = new jInternalFrameCustomerSearch();
+        JTabbedPane guias = new jTabbedPaneManageQuides();
 
-        add(WindCustomerRegistration);
-        add(WindCustomerSearch);
+        add(guias);
 
     }
 }

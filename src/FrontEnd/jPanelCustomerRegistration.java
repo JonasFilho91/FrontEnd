@@ -3,13 +3,10 @@ package FrontEnd;
 import javax.swing.*;
 import java.awt.*;
 
-public class jInternalFrameCustomerRegistration extends JInternalFrame{
-public jInternalFrameCustomerRegistration(){
-    setVisible(true);
-    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+public class jPanelCustomerRegistration extends JPanel{
+public jPanelCustomerRegistration(){
     setSize(800,500);
-    setResizable(false);
-    setTitle("Cadastro de Clientes");
+    setName("Cadastrar Clientes");
     setLayout(null);
 
 
