@@ -1,10 +1,10 @@
-import FrontEnd.FrameCustomerManager;
-import FrontEnd.FrameCustomerRegistration;
+import FrontEnd.jFrameCustomerManager;
 
 public class Main {
     public static void main(String[] args) {
 
-        FrameCustomerManager AppWindows = new FrameCustomerManager();
+        jFrameCustomerManager AppWindows = new jFrameCustomerManager();
+
 
     }
 }
