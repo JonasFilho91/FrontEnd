@@ -1,8 +1,9 @@
-import FrontEnd.ScreenRegistryWindow;
+import FrontEnd.FrameCustomerRegistration;
 
 public class Main {
     public static void main(String[] args) {
-        ScreenRegistryWindow jQuadro = new ScreenRegistryWindow();
+
+        FrameCustomerRegistration jFrameCustomerRegistration = new FrameCustomerRegistration();
 
 
 

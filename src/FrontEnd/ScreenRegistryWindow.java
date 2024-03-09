@@ -1,7 +1,5 @@
 package FrontEnd;
 
-import resources.Cores.Jcor;
-
 import javax.swing.*;
 import java.awt.*;
 
