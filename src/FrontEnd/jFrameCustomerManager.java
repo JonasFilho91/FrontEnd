@@ -1,5 +1,7 @@
 package FrontEnd;
 
+import resources.Outros.TamanhoWindons;
+
 import javax.swing.*;
 
 public class jFrameCustomerManager extends JFrame {
@@ -7,7 +9,7 @@ public class jFrameCustomerManager extends JFrame {
         //Configurações da Janela
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
-        setSize(800, 500);
+        setSize(new TamanhoWindons());
         setResizable(false);
         setLocationRelativeTo(null);
         setTitle("Registro de clientes");
