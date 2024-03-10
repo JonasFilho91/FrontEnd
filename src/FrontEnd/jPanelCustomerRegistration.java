@@ -6,7 +6,7 @@ import java.awt.*;
 public class jPanelCustomerRegistration extends JPanel{
 public jPanelCustomerRegistration(){
     setSize(800,500);
-    setName("Cadastrar Clientes");
+    setName("Consultar Clientes");
     setLayout(null);
 
 

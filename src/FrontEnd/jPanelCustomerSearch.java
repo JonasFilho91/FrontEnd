@@ -1,6 +1,7 @@
 package FrontEnd;
 
 import resources.Outros.BoxSize;
+import resources.Outros.FonteText;
 
 import javax.swing.*;
 import java.awt.*;
