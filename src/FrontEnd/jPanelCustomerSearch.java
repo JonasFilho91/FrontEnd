@@ -15,21 +15,26 @@ public class jPanelCustomerSearch extends JPanel{
         //Criação dos componentes
 
             //Labels and  JFormattedTextField
+            //Titulo
             JLabel txtTitulo = new JLabel("Sistema de Registro de Clientes");
             txtTitulo.setSize(BoxSize.getSizeDimension());
             txtTitulo.setFont(FonteText.getFonte_text());
             txtTitulo.setLocation(80,10);
             add(txtTitulo);
 
+            //Titulo CPF
             JLabel txtCPF = new JLabel("CPF");
-            txtCPF.setBounds(BoxSize.getSizeRectangle());
+            txtCPF.setSize(BoxSize.getSizeDimension());
             txtCPF.setFont(FonteText.getFonte_text());
             txtCPF.setLocation(80,txtTitulo.getY() + txtTitulo.getHeight() + 10);
+            txtCPF.setVerticalTextPosition(SwingConstants.BOTTOM);
             add(txtCPF);
 
+            //Caixa de Texto
             JFormattedTextField jFormattedTextFieldCPF = new JFormattedTextField();
+            jFormattedTextFieldCPF.setFont(FonteText.getFonte_text());
             jFormattedTextFieldCPF.setSize(350,BoxSize.getHeightStandard());
-            jFormattedTextFieldCPF.setLocation(80,txtCPF.getY() + txtCPF.getHeight() + 10);
+            jFormattedTextFieldCPF.setLocation(80,txtCPF.getY() + txtCPF.getHeight() + 2);
             add(jFormattedTextFieldCPF);
 
             //Botão Buscar
@@ -50,9 +55,15 @@ public class jPanelCustomerSearch extends JPanel{
             buttonToClean.setBackground(new Color(239, 189, 36));
             add(buttonToClean);
 
+            //Titulo Lista de clientes
             JLabel txtListadeClientes = new JLabel("Lista de Clientes");
+            txtListadeClientes.setSize(BoxSize.getSizeDimension());
+            txtListadeClientes.setFont(FonteText.getFonte_text());
             txtListadeClientes.setLocation(80,buttonSearch.getY() + buttonSearch.getHeight() + 10);
             add(txtListadeClientes);
+
+            //Tabela de pesquisa
+
 
     }
 }
