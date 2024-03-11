@@ -13,11 +13,12 @@ public class jTabbedPaneManageQuides extends JTabbedPane {
         setLocation(0,0);
         setSize(new TamanhoWindons());
 
-
-        jPanelCustomerSearch        Consultar = new jPanelCustomerSearch();
         jPanelCustomerRegistration  Cadastrar = new jPanelCustomerRegistration();
-            addTab("Consultar",null,Consultar);
-            addTab("Cadastrar",null,Cadastrar);
+        jPanelCustomerSearch        Consultar = new jPanelCustomerSearch();
+
+        addTab("Cadastrar",null,Cadastrar);
+        addTab("Consultar",null,Consultar);
+        setSelectedIndex(1);
 
     }
 }
