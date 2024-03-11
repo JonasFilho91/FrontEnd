@@ -2,7 +2,7 @@ package FrontEnd;
 
 import javax.swing.table.AbstractTableModel;
 
-public class jTabQuery extends AbstractTableModel {
+public class jTabModel extends AbstractTableModel {
     String[] columnNames = {"Id","Nome","CPF","Celular","E-mail"};
     Object[][] datas = {    {new Integer(1), "jonas","048.623.958.81", "(85) 988820874","jonas@gmail.com"},
                             {new Integer(2), "Larissa","148.623.958.81", "(85) 988820874","Larria@gmail.com"},
@@ -20,7 +20,10 @@ public class jTabQuery extends AbstractTableModel {
     public int getColumnCount() {
         return columnNames.length;
     }
-
+    @Override
+    public String getColumnName(int col) {
+        return columnNames[col];
+    }
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         return datas[rowIndex][columnIndex];

@@ -68,12 +68,11 @@ public class jPanelCustomerSearch extends JPanel{
 
             //Tabela de Consulta
 
-            //Tabela
-            JTable mTab = new JTable(new jTabQuery());
-            JScrollPane jScrolPaneTab = new JScrollPane(mTab);
+            //ScrolPane com tabela
+            jSrolPaneTab jScrolPaneTab = new jSrolPaneTab();
             jScrolPaneTab.setLocation(80, txtListadeClientes.getY() + txtListadeClientes.getHeight()-5);
             jScrolPaneTab.setSize(1040,650 - (jScrolPaneTab.getY() + jScrolPaneTab.getHeight() + 50));
-            mTab.setFillsViewportHeight(false);
+
             add(jScrolPaneTab);
 
 
