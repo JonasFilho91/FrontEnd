@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class jSrolPaneTab extends JScrollPane{
 
-    public jSrolPaneTab(){
+    public jSrolPaneTab(JTable myTabView){
         JTable mTab = new JTable(new jTabModel());
         setColumnHeaderView(mTab);
         mTab.setRowHeight(30);

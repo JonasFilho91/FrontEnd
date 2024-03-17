@@ -6,7 +6,7 @@ import javax.swing.*;
 
 public class jFrameCustomerManager extends JFrame {
     public jFrameCustomerManager() {
-        //Configurações da Janela
+        //Atributos da Janela
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
         setSize(new TamanhoWindons());
@@ -15,9 +15,10 @@ public class jFrameCustomerManager extends JFrame {
         setTitle("Registro de clientes");
         setLayout(null);
 
-        JTabbedPane guias = new jTabbedPaneManageQuides();
+        //Guias
+        JTabbedPane Guias = new jTabbedPaneManageQuides();
 
-        add(guias);
+        add(Guias);
 
     }
 }

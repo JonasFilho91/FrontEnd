@@ -1,10 +1,13 @@
 package FrontEnd;
 
+import TabelaHash.Adapter;
+import TabelaHash.CadastroUsuarioHash;
 import resources.Outros.BoxSize;
 import resources.Outros.FonteText;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 
 public class jPanelCustomerRegistration extends JPanel{
     public jPanelCustomerRegistration(){
@@ -36,22 +39,22 @@ public class jPanelCustomerRegistration extends JPanel{
         txtNome.setVerticalTextPosition(SwingConstants.BOTTOM);
         add(txtNome);
 
-        //Caixa de Texto
-        JFormattedTextField JFormattedTextFieldNome = new JFormattedTextField();
-        JFormattedTextFieldNome.setFont(FonteText.getFonte_text());
-        JFormattedTextFieldNome.setSize(350,BoxSize.getHeightStandard());
-        JFormattedTextFieldNome.setLocation(80,txtNome.getY() + txtNome.getHeight() + 2);
-        add(JFormattedTextFieldNome);
+        //Caixa de Texto Nome
+        JFormattedTextField jFormattedTextFieldNome = new JFormattedTextField();
+        jFormattedTextFieldNome.setFont(FonteText.getFonte_text());
+        jFormattedTextFieldNome.setSize(350,BoxSize.getHeightStandard());
+        jFormattedTextFieldNome.setLocation(80,txtNome.getY() + txtNome.getHeight() + 2);
+        add(jFormattedTextFieldNome);
 
         //Titulo CPF
         JLabel txtCPF = new JLabel("CPF");
         txtCPF.setSize(BoxSize.getSizeDimension());
         txtCPF.setFont(FonteText.getFonte_text());
-        txtCPF.setLocation(80,JFormattedTextFieldNome .getY() + JFormattedTextFieldNome.getHeight() + 10);
+        txtCPF.setLocation(80,jFormattedTextFieldNome .getY() + jFormattedTextFieldNome.getHeight() + 10);
         txtCPF.setVerticalTextPosition(SwingConstants.BOTTOM);
         add(txtCPF);
 
-        //Caixa de Texto
+        //Caixa de Texto CPF
         JFormattedTextField jFormattedTextFieldCPF = new JFormattedTextField();
         jFormattedTextFieldCPF.setFont(FonteText.getFonte_text());
         jFormattedTextFieldCPF.setSize(350,BoxSize.getHeightStandard());
@@ -66,7 +69,7 @@ public class jPanelCustomerRegistration extends JPanel{
         txtCelular.setVerticalTextPosition(SwingConstants.BOTTOM);
         add(txtCelular);
 
-        //Caixa de Texto
+        //Caixa de Texto Celular
         JFormattedTextField jFormattedTextFieldCelular = new JFormattedTextField();
         jFormattedTextFieldCelular.setFont(FonteText.getFonte_text());
         jFormattedTextFieldCelular.setSize(350,BoxSize.getHeightStandard());
@@ -81,7 +84,7 @@ public class jPanelCustomerRegistration extends JPanel{
         txtEmail.setVerticalTextPosition(SwingConstants.BOTTOM);
         add(txtEmail);
 
-        //Caixa de Texto
+        //Caixa de Texto Email
         JFormattedTextField jFormattedTextFieldEmail = new JFormattedTextField();
         jFormattedTextFieldEmail.setFont(FonteText.getFonte_text());
         jFormattedTextFieldEmail.setSize(350,BoxSize.getHeightStandard());
@@ -93,13 +96,32 @@ public class jPanelCustomerRegistration extends JPanel{
         ButtonClear.setBounds(80, 400, 90, 25);
         ButtonClear.setBackground(new Color(240, 190, 35));
         add(ButtonClear);
+        ButtonClear.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFormattedTextFieldNome.setText("");
+                jFormattedTextFieldCPF.setText("");
+                jFormattedTextFieldCelular.setText("");
+                jFormattedTextFieldEmail.setText("");
+            }
+        });
 
 
         JButton ButtonSalve = new JButton("Salvar");
         ButtonSalve.setBounds(200, 400, 90, 25);
         ButtonSalve.setBackground(new Color(30, 120, 105));
         add(ButtonSalve);
-
+        ButtonSalve.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               CadastroUsuarioHash.cadastrarUsuario(    Adapter.getMyTabHash(),
+                                                        jFormattedTextFieldNome.getText(),
+                                                        jFormattedTextFieldCPF.getText(),
+                                                        jFormattedTextFieldCelular.getText(),
+                                                        jFormattedTextFieldEmail.getText());
+               Adapter.Update_Data();
+            }
+        });
 
     }
 

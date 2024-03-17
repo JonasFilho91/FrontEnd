@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class jPanelCustomerSearch extends JPanel{
-    public jPanelCustomerSearch(){
+    public jPanelCustomerSearch(JTable myTabView){
         //Configurações da Painel
         setSize(1200,650);
         setName("Filtrar Registros");
@@ -69,7 +69,7 @@ public class jPanelCustomerSearch extends JPanel{
             //Tabela de Consulta
 
             //ScrolPane com tabela
-            jSrolPaneTab jScrolPaneTab = new jSrolPaneTab();
+            jSrolPaneTab jScrolPaneTab = new jSrolPaneTab(myTabView);
             jScrolPaneTab.setLocation(80, txtListadeClientes.getY() + txtListadeClientes.getHeight()-5);
             jScrolPaneTab.setSize(1040,650 - (jScrolPaneTab.getY() + jScrolPaneTab.getHeight() + 50));
 
