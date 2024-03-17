@@ -1,13 +1,17 @@
 package FrontEnd;
 
+import CPFvalidation.CPFvalida;
+import TabelaHash.Adapter;
+import TabelaHash.CadastroUsuarioHash;
 import resources.Outros.BoxSize;
 import resources.Outros.FonteText;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 
 public class jPanelCustomerSearch extends JPanel{
-    public jPanelCustomerSearch(JTable myTabView){
+    public jPanelCustomerSearch(){
         //Configurações da Painel
         setSize(1200,650);
         setName("Filtrar Registros");
@@ -33,6 +37,7 @@ public class jPanelCustomerSearch extends JPanel{
 
             //Caixa de Texto
             JFormattedTextField jFormattedTextFieldCPF = new JFormattedTextField();
+            jFormattedTextFieldCPF.setText("");
             jFormattedTextFieldCPF.setFont(FonteText.getFonte_text());
             jFormattedTextFieldCPF.setSize(350,BoxSize.getHeightStandard());
             jFormattedTextFieldCPF.setLocation(80,txtCPF.getY() + txtCPF.getHeight()-5);
@@ -49,6 +54,17 @@ public class jPanelCustomerSearch extends JPanel{
             buttonSearch.setBackground(new Color(55, 196, 132));
             add(buttonSearch);
 
+            buttonSearch.addActionListener(new AbstractAction() {
+                 @Override
+                 public void actionPerformed(ActionEvent e) {
+                     System.out.println(jFormattedTextFieldCPF.getText());
+                     if (CPFvalida.ValidarCPF(jFormattedTextFieldCPF.getText())) {
+                         CadastroUsuarioHash.buscarUsuarioPorCPF(jFormattedTextFieldCPF.getText());
+                         Adapter.Update_Data();
+                     }
+                 }
+             });
+
             //Botão Limpar
             ImageIcon borrachaIcon = new ImageIcon("src/resources/Icons/apagador2.png");
             buttonSearch.setHorizontalAlignment(SwingConstants.CENTER);
@@ -58,6 +74,14 @@ public class jPanelCustomerSearch extends JPanel{
             buttonToClean.setLocation(buttonSearch.getX() + buttonSearch.getWidth() + 10,buttonSearch.getY());
             buttonToClean.setBackground(new Color(239, 189, 36));
             add(buttonToClean);
+
+            buttonToClean.addActionListener(new AbstractAction() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    jFormattedTextFieldCPF.setText("");
+                    Adapter.Update_Data();
+                }
+            });
 
             //Titulo Lista de clientes
             JLabel txtListadeClientes = new JLabel("Lista de Clientes");
@@ -69,7 +93,7 @@ public class jPanelCustomerSearch extends JPanel{
             //Tabela de Consulta
 
             //ScrolPane com tabela
-            jSrolPaneTab jScrolPaneTab = new jSrolPaneTab(myTabView);
+            jSrolPaneTab jScrolPaneTab = new jSrolPaneTab(Adapter.getMyTabView());
             jScrolPaneTab.setLocation(80, txtListadeClientes.getY() + txtListadeClientes.getHeight()-5);
             jScrolPaneTab.setSize(1040,650 - (jScrolPaneTab.getY() + jScrolPaneTab.getHeight() + 50));
 

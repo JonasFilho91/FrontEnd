@@ -1,34 +1,49 @@
 package TabelaHash;
 
-import java.util.Map;
+import javax.swing.*;
 
 public class CadastroUsuarioHash {
-    public static boolean cadastrarUsuario(Map<String, Usuario> usuarioMap, String nome, String cpf, String celular, String email) {
-        if (usuarioMap.containsKey(cpf)) {
+
+    public static void cadastrarUsuario(String nome, String cpf, String celular, String email) {
+        if (Adapter.myTabHash.containsKey(cpf)) {
             System.out.println("CPF já cadastrado.");
-            return false;
+            JOptionPane.showMessageDialog(null, "CPF já cadastrado.", "Cadastro Usuário", JOptionPane.INFORMATION_MESSAGE);
         } else {
             Usuario novoUsuario = new Usuario(nome, cpf, celular, email);
-            usuarioMap.put(cpf, novoUsuario);
+            Adapter.myTabHash.put(cpf, novoUsuario);
             System.out.println("Usuário cadastrado com sucesso.");
-            return true;
-        }
-    }
-    public static Object buscarUsuarioPorCPF(Map<String, Usuario> usuarioMap, String cpf) {
-        Usuario usuario = null;
-        if (usuarioMap.containsKey(cpf)) {
-            usuario = usuarioMap.get(cpf);
-            System.out.println("Usuário encontrado: " + usuario.getNome() + ", CPF: " + usuario.getCpf() + ", Celular: " + usuario.getCelular() + ", Email: " + usuario.getEmail());
-            return usuario;
-        } else {
-            System.out.println("Usuário não encontrado.");
-            return usuario;
+            JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso.", "Cadastro Usuário", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
-    public static boolean excluirUsuario(Map<String, CadastroUsuario> usuarioMap, String cpf) {
-        if (usuarioMap.containsKey(cpf)) {
-            usuarioMap.remove(cpf);
+    public static boolean buscarUsuarioPorCPF(String cpf) {
+
+        Usuario usuario = null;
+
+        if (Adapter.myTabHash.containsKey(cpf)) {
+
+            usuario = Adapter.myTabHash.get(cpf);
+
+            Object[][] dadosBusca = new Object[1][4];
+
+            System.out.println("Usuário encontrado: " + usuario.getNome() + ", CPF: " + usuario.getCpf() + ", Celular: " + usuario.getCelular() + ", Email: " + usuario.getEmail());
+
+            dadosBusca[0][0] = usuario.getNome();
+            dadosBusca[0][1] = usuario.getCpf();
+            dadosBusca[0][2] = usuario.getCelular();
+            dadosBusca[0][3] = usuario.getEmail();
+
+            Adapter.setData(dadosBusca);
+            return true;
+        } else {
+            System.out.println("Usuário não encontrado.");
+            return false;
+        }
+    }
+
+    public static boolean excluirUsuario(String cpf) {
+        if (Adapter.myTabHash.containsKey(cpf)) {
+            Adapter.myTabHash.remove(cpf);
             System.out.println("Usuário excluído com sucesso.");
             return true;
         } else {
@@ -37,15 +52,20 @@ public class CadastroUsuarioHash {
         }
     }
 
-    public static Object[][] listarUsuarios(Map<String, Usuario> usuarioMap) {
-        Object[][] data = new Object[usuarioMap.size()][4];
-        if (usuarioMap.isEmpty()) {
+    public static void listarUsuarios() {
+
+        Object[][] data = new Object[Adapter.myTabHash.size()+1][4];
+        if (Adapter.myTabHash.isEmpty()) {
             data[0][0] = "";
+            data[0][1] = "";
+            data[0][2] = "";
+            data[0][3] = "";
+
+            Adapter.setData(data);
             System.out.println("Nenhum usuário cadastrado.");
-            return data;
         } else {
             int n = 0;
-            for (Usuario usuario : usuarioMap.values()) {
+            for (Usuario usuario : Adapter.myTabHash.values()) {
                 System.out.println("Nome: " + usuario.getNome() + ", CPF: " + usuario.getCpf() + ", Celular: " + usuario.getCelular() + ", Email: " + usuario.getEmail());
                 data[n][0] = usuario.getNome();
                 data[n][1] = usuario.getCpf();
@@ -53,7 +73,6 @@ public class CadastroUsuarioHash {
                 data[n][3] = usuario.getEmail();
                 n++;
             }
-        }
-        return data;
+        }Adapter.setData(data);
     }
 }

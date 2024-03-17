@@ -8,7 +8,7 @@ public class Adapter {
     //Atributos
     public static Map < String , Usuario> myTabHash;
     public static JTable myTabView;
-    public static Object[][] data;
+    public static Object[][] data = {{"","","",""}};
 
     //Getter's
     public static Map<String, Usuario> getMyTabHash() {
@@ -29,7 +29,15 @@ public class Adapter {
     public static void setMyTabView(JTable myTabView) {
         Adapter.myTabView = myTabView;
     }
+
+    public static void setData(Object[][] data) {
+        Adapter.data = data;
+        System.out.println(data);
+        System.out.println(Adapter.data.length);
+    }
+
     public static void Update_Data() {
-        Adapter.data = CadastroUsuarioHash.listarUsuarios(myTabHash);
+        CadastroUsuarioHash.listarUsuarios();
+
     }
 }

@@ -24,15 +24,18 @@ public class jTabbedPaneManageQuides extends JTabbedPane {
         //Tabela Hash
         Map < String , Usuario>    usuarioMap          = new HashMap<>();
 
-        //Tabela view
-        JTable myTabView = new JTable(new MyJTabModel());
-
         //Atapitador
         Adapter.setMyTabHash(usuarioMap);
+
+        //Tabela view
+        JTable myTabView = new JTable(new MyJTabModel());
+        myTabView.setAutoCreateColumnsFromModel(true);
+
+
         Adapter.setMyTabView(myTabView);
         //Guias
         jPanelCustomerRegistration  Cadastrar = new jPanelCustomerRegistration();
-        jPanelCustomerSearch        Consultar = new jPanelCustomerSearch(myTabView);
+        jPanelCustomerSearch        Consultar = new jPanelCustomerSearch();
 
         addTab("Cadastrar",null,Cadastrar);
         addTab("Consultar",null,Consultar);

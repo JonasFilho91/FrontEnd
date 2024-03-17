@@ -8,6 +8,7 @@ import resources.Outros.FonteText;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.Objects;
 
 public class jPanelCustomerRegistration extends JPanel{
     public jPanelCustomerRegistration(){
@@ -32,7 +33,7 @@ public class jPanelCustomerRegistration extends JPanel{
         add(txtAdicionarCliente);
 
         //Título Nome
-        JLabel txtNome = new JLabel("Nome");
+        JLabel txtNome = new JLabel("Nome*");
         txtNome.setSize(BoxSize.getSizeDimension());
         txtNome.setFont(FonteText.getFonte_text());
         txtNome.setLocation(80, txtAdicionarCliente.getY() + txtAdicionarCliente.getHeight() + 30);
@@ -44,10 +45,12 @@ public class jPanelCustomerRegistration extends JPanel{
         jFormattedTextFieldNome.setFont(FonteText.getFonte_text());
         jFormattedTextFieldNome.setSize(350,BoxSize.getHeightStandard());
         jFormattedTextFieldNome.setLocation(80,txtNome.getY() + txtNome.getHeight() + 2);
+
+        jFormattedTextFieldNome.setText("");
         add(jFormattedTextFieldNome);
 
         //Titulo CPF
-        JLabel txtCPF = new JLabel("CPF");
+        JLabel txtCPF = new JLabel("CPF*");
         txtCPF.setSize(BoxSize.getSizeDimension());
         txtCPF.setFont(FonteText.getFonte_text());
         txtCPF.setLocation(80,jFormattedTextFieldNome .getY() + jFormattedTextFieldNome.getHeight() + 10);
@@ -59,6 +62,8 @@ public class jPanelCustomerRegistration extends JPanel{
         jFormattedTextFieldCPF.setFont(FonteText.getFonte_text());
         jFormattedTextFieldCPF.setSize(350,BoxSize.getHeightStandard());
         jFormattedTextFieldCPF.setLocation(80,txtCPF.getY() + txtCPF.getHeight() + 2);
+
+        jFormattedTextFieldCPF.setText("");
         add(jFormattedTextFieldCPF);
 
         //Título Celular
@@ -74,6 +79,8 @@ public class jPanelCustomerRegistration extends JPanel{
         jFormattedTextFieldCelular.setFont(FonteText.getFonte_text());
         jFormattedTextFieldCelular.setSize(350,BoxSize.getHeightStandard());
         jFormattedTextFieldCelular.setLocation(80,txtCelular.getY() + txtCelular.getHeight() + 2);
+
+        jFormattedTextFieldCelular.setText("");
         add(jFormattedTextFieldCelular);
 
         //Título Email
@@ -89,6 +96,8 @@ public class jPanelCustomerRegistration extends JPanel{
         jFormattedTextFieldEmail.setFont(FonteText.getFonte_text());
         jFormattedTextFieldEmail.setSize(350,BoxSize.getHeightStandard());
         jFormattedTextFieldEmail.setLocation(80,txtEmail.getY() + txtEmail.getHeight() + 2);
+
+        jFormattedTextFieldEmail.setText("");
         add(jFormattedTextFieldEmail);
 
 
@@ -114,12 +123,19 @@ public class jPanelCustomerRegistration extends JPanel{
         ButtonSalve.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               CadastroUsuarioHash.cadastrarUsuario(    Adapter.getMyTabHash(),
-                                                        jFormattedTextFieldNome.getText(),
-                                                        jFormattedTextFieldCPF.getText(),
-                                                        jFormattedTextFieldCelular.getText(),
-                                                        jFormattedTextFieldEmail.getText());
-               Adapter.Update_Data();
+                if( (!Objects.equals(jFormattedTextFieldNome.getText(), "")) && (!Objects.equals(jFormattedTextFieldCPF.getText(), ""))) {
+                    CadastroUsuarioHash.cadastrarUsuario(jFormattedTextFieldNome.getText(),
+                            jFormattedTextFieldCPF.getText(),
+                            jFormattedTextFieldCelular.getText(),
+                            jFormattedTextFieldEmail.getText());
+                    Adapter.Update_Data();
+                    jFormattedTextFieldNome.setText("");
+                    jFormattedTextFieldCPF.setText("");
+                    jFormattedTextFieldCelular.setText("");
+                    jFormattedTextFieldEmail.setText("");
+                }else {
+                    JOptionPane.showMessageDialog(null, "Nome e CPF não podem estar em branco. \n Tente novamente", "CAMPOS OBRIGATÓRIOS", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
 
