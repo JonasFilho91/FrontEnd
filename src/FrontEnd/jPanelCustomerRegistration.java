@@ -100,8 +100,9 @@ public class jPanelCustomerRegistration extends JPanel{
         jFormattedTextFieldEmail.setText("");
         add(jFormattedTextFieldEmail);
 
-
-        JButton ButtonClear = new JButton("Limpar");
+        ImageIcon borracha1Icon = new ImageIcon("src/resources/Icons/apagador2.png");
+        JButton ButtonClear = new JButton("Limpar",borracha1Icon);
+        ButtonClear.setHorizontalAlignment(SwingConstants.CENTER);
         ButtonClear.setBounds(80, 400, 90, 25);
         ButtonClear.setBackground(new Color(240, 190, 35));
         add(ButtonClear);
@@ -115,8 +116,9 @@ public class jPanelCustomerRegistration extends JPanel{
             }
         });
 
-
-        JButton ButtonSalve = new JButton("Salvar");
+        ImageIcon DisketIcon = new ImageIcon("src/resources/Icons/disco 2.png");
+        JButton ButtonSalve = new JButton("Salvar",DisketIcon);
+        ButtonSalve.setHorizontalAlignment(SwingConstants.CENTER);
         ButtonSalve.setBounds(200, 400, 90, 25);
         ButtonSalve.setBackground(new Color(30, 120, 105));
         add(ButtonSalve);

@@ -10,6 +10,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class jTabbedPaneManageQuides extends JTabbedPane {
+    //Objtos......................................................................................................
+    Map < String , Usuario> usuarioMap = new HashMap<>();
+    //Tabela view
+    MyJTabModel myJTabModel = new MyJTabModel();
+    JTable myTabView;
 
     public jTabbedPaneManageQuides(){
         //Atributos
@@ -19,20 +24,13 @@ public class jTabbedPaneManageQuides extends JTabbedPane {
         setLocation(0,0);
         setSize(new TamanhoWindons());
 
-        //Objtos......................................................................................................
-
-        //Tabela Hash
-        Map < String , Usuario>    usuarioMap          = new HashMap<>();
-
         //Atapitador
         Adapter.setMyTabHash(usuarioMap);
-
-        //Tabela view
-        JTable myTabView = new JTable(new MyJTabModel());
+        Adapter.setMyJTabModel(myJTabModel);
+        myTabView = new JTable(Adapter.getMyJTabModel());
         myTabView.setAutoCreateColumnsFromModel(true);
-
-
         Adapter.setMyTabView(myTabView);
+
         //Guias
         jPanelCustomerRegistration  Cadastrar = new jPanelCustomerRegistration();
         jPanelCustomerSearch        Consultar = new jPanelCustomerSearch();

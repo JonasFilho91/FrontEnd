@@ -27,6 +27,7 @@ public class CadastroUsuarioHash {
             Object[][] dadosBusca = new Object[1][4];
 
             System.out.println("Usuário encontrado: " + usuario.getNome() + ", CPF: " + usuario.getCpf() + ", Celular: " + usuario.getCelular() + ", Email: " + usuario.getEmail());
+            JOptionPane.showMessageDialog(null, "Não ha usuário com esse CPF", "Buscar - ERRO", JOptionPane.ERROR_MESSAGE);
 
             dadosBusca[0][0] = usuario.getNome();
             dadosBusca[0][1] = usuario.getCpf();
@@ -34,6 +35,7 @@ public class CadastroUsuarioHash {
             dadosBusca[0][3] = usuario.getEmail();
 
             Adapter.setData(dadosBusca);
+            Adapter.getMyJTabModel().fireTableDataChanged();
             return true;
         } else {
             System.out.println("Usuário não encontrado.");
@@ -41,14 +43,14 @@ public class CadastroUsuarioHash {
         }
     }
 
-    public static boolean excluirUsuario(String cpf) {
+    public static void excluirUsuario(String cpf) {
         if (Adapter.myTabHash.containsKey(cpf)) {
             Adapter.myTabHash.remove(cpf);
             System.out.println("Usuário excluído com sucesso.");
-            return true;
+            JOptionPane.showMessageDialog(null, "Usuário excluído com sucesso.", "Excluir", JOptionPane.INFORMATION_MESSAGE);
         } else {
             System.out.println("Usuário não encontrado.");
-            return false;
+            JOptionPane.showMessageDialog(null, "Não ha usuário com esse CPF", "Buscar - ERRO", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -72,7 +74,7 @@ public class CadastroUsuarioHash {
                 data[n][2] = usuario.getCelular();
                 data[n][3] = usuario.getEmail();
                 n++;
-            }
-        }Adapter.setData(data);
+            }Adapter.setData(data);
+        }
     }
 }

@@ -60,28 +60,52 @@ public class jPanelCustomerSearch extends JPanel{
                      System.out.println(jFormattedTextFieldCPF.getText());
                      if (CPFvalida.ValidarCPF(jFormattedTextFieldCPF.getText())) {
                          CadastroUsuarioHash.buscarUsuarioPorCPF(jFormattedTextFieldCPF.getText());
-                         Adapter.Update_Data();
+
+
                      }
                  }
              });
 
-            //Botão Limpar
-            ImageIcon borrachaIcon = new ImageIcon("src/resources/Icons/apagador2.png");
-            buttonSearch.setHorizontalAlignment(SwingConstants.CENTER);
-            JButton buttonToClean = new JButton("Limpar",borrachaIcon);
-            buttonToClean.setFont(FonteText.getFonte_text());
-            buttonToClean.setSize(150,BoxSize.getHeightStandard());
-            buttonToClean.setLocation(buttonSearch.getX() + buttonSearch.getWidth() + 10,buttonSearch.getY());
-            buttonToClean.setBackground(new Color(239, 189, 36));
-            add(buttonToClean);
+            //Botão Excluir
+            ImageIcon LixeiraIcon = new ImageIcon("src/resources/Icons/excluir  2.png");
+            JButton buttonToDelete = new JButton("Excluir",LixeiraIcon);
+            buttonToDelete.setHorizontalAlignment(SwingConstants.CENTER);
+            buttonToDelete.setFont(FonteText.getFonte_text());
+            buttonToDelete.setSize(150,BoxSize.getHeightStandard());
+            buttonToDelete.setLocation(buttonSearch.getX() + buttonSearch.getWidth() + 10,buttonSearch.getY());
+            buttonToDelete.setBackground(new Color(239, 189, 36));
+            add(buttonToDelete);
 
-            buttonToClean.addActionListener(new AbstractAction() {
+            buttonToDelete.addActionListener(new AbstractAction() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    jFormattedTextFieldCPF.setText("");
-                    Adapter.Update_Data();
+                System.out.println(jFormattedTextFieldCPF.getText());
+                    if (CPFvalida.ValidarCPF(jFormattedTextFieldCPF.getText())) {
+                    CadastroUsuarioHash.excluirUsuario(jFormattedTextFieldCPF.getText());
+                        Adapter.Update_Data();
+                        Adapter.getMyJTabModel().fireTableDataChanged();
+                    }
                 }
             });
+
+        //Botão Limpar
+        ImageIcon borrachaIcon = new ImageIcon("src/resources/Icons/apagador2.png");
+        JButton buttonToClean = new JButton("Limpar",borrachaIcon);
+        buttonToClean.setHorizontalAlignment(SwingConstants.CENTER);
+        buttonToClean.setFont(FonteText.getFonte_text());
+        buttonToClean.setSize(150,BoxSize.getHeightStandard());
+        buttonToClean.setLocation(buttonToDelete.getX() + buttonToDelete.getWidth() + 10,buttonToDelete.getY());
+        buttonToClean.setBackground(new Color(239, 189, 36));
+        add(buttonToClean);
+
+        buttonToClean.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFormattedTextFieldCPF.setText("");
+                Adapter.Update_Data();
+                Adapter.getMyJTabModel().fireTableDataChanged();
+            }
+        });
 
             //Titulo Lista de clientes
             JLabel txtListadeClientes = new JLabel("Lista de Clientes");
