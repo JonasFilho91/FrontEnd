@@ -48,6 +48,7 @@ public class jPanelCustomerSearch extends JPanel{
             JButton buttonSearch = new JButton("Buscar",lupaIcon);
             buttonSearch.setFont(FonteText.getFonte_text());
             buttonSearch.setHorizontalAlignment(SwingConstants.CENTER);
+            buttonSearch.setVerticalAlignment(SwingConstants.CENTER);
             buttonSearch.setSize(150,BoxSize.getHeightStandard());
             buttonSearch.setLocation(80,jFormattedTextFieldCPF.getY() + jFormattedTextFieldCPF.getHeight() + 10);
             buttonSearch.setForeground(new Color(0, 0, 0));
@@ -70,10 +71,11 @@ public class jPanelCustomerSearch extends JPanel{
             ImageIcon LixeiraIcon = new ImageIcon("src/resources/Icons/excluir  2.png");
             JButton buttonToDelete = new JButton("Excluir",LixeiraIcon);
             buttonToDelete.setHorizontalAlignment(SwingConstants.CENTER);
+            buttonToDelete.setVerticalAlignment(SwingConstants.CENTER);
             buttonToDelete.setFont(FonteText.getFonte_text());
             buttonToDelete.setSize(150,BoxSize.getHeightStandard());
             buttonToDelete.setLocation(buttonSearch.getX() + buttonSearch.getWidth() + 10,buttonSearch.getY());
-            buttonToDelete.setBackground(new Color(239, 189, 36));
+            buttonToDelete.setBackground(new Color(245, 98, 79));
             add(buttonToDelete);
 
             buttonToDelete.addActionListener(new AbstractAction() {
@@ -92,6 +94,7 @@ public class jPanelCustomerSearch extends JPanel{
         ImageIcon borrachaIcon = new ImageIcon("src/resources/Icons/apagador2.png");
         JButton buttonToClean = new JButton("Limpar",borrachaIcon);
         buttonToClean.setHorizontalAlignment(SwingConstants.CENTER);
+        buttonToClean.setVerticalAlignment(SwingConstants.CENTER);
         buttonToClean.setFont(FonteText.getFonte_text());
         buttonToClean.setSize(150,BoxSize.getHeightStandard());
         buttonToClean.setLocation(buttonToDelete.getX() + buttonToDelete.getWidth() + 10,buttonToDelete.getY());

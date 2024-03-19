@@ -103,8 +103,12 @@ public class jPanelCustomerRegistration extends JPanel{
         ImageIcon borracha1Icon = new ImageIcon("src/resources/Icons/apagador2.png");
         JButton ButtonClear = new JButton("Limpar",borracha1Icon);
         ButtonClear.setHorizontalAlignment(SwingConstants.CENTER);
-        ButtonClear.setBounds(80, 400, 90, 25);
+        ButtonClear.setVerticalAlignment(SwingConstants.CENTER);
+        ButtonClear.setFont(FonteText.getFonte_text());
+        ButtonClear.setSize(150,BoxSize.getHeightStandard());
+        ButtonClear.setLocation(80,jFormattedTextFieldEmail.getY() + jFormattedTextFieldEmail.getHeight() + 10);
         ButtonClear.setBackground(new Color(240, 190, 35));
+        ButtonClear.setFont(FonteText.getFonte_text());
         add(ButtonClear);
         ButtonClear.addActionListener(new AbstractAction() {
             @Override
@@ -119,8 +123,11 @@ public class jPanelCustomerRegistration extends JPanel{
         ImageIcon DisketIcon = new ImageIcon("src/resources/Icons/disco 2.png");
         JButton ButtonSalve = new JButton("Salvar",DisketIcon);
         ButtonSalve.setHorizontalAlignment(SwingConstants.CENTER);
-        ButtonSalve.setBounds(200, 400, 90, 25);
-        ButtonSalve.setBackground(new Color(30, 120, 105));
+        ButtonSalve.setVerticalAlignment(SwingConstants.CENTER);
+        ButtonSalve.setSize(150,BoxSize.getHeightStandard());
+        ButtonSalve.setLocation(ButtonClear.getX() + ButtonClear.getWidth() + 10,ButtonClear.getY());
+        ButtonSalve.setBackground(new Color(55, 196, 132));
+        ButtonSalve.setFont(FonteText.getFonte_text());
         add(ButtonSalve);
         ButtonSalve.addActionListener(new AbstractAction() {
             @Override
