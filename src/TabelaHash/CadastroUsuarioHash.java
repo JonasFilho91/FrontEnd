@@ -27,7 +27,7 @@ public class CadastroUsuarioHash {
             Object[][] dadosBusca = new Object[1][4];
 
             System.out.println("Usuário encontrado: " + usuario.getNome() + ", CPF: " + usuario.getCpf() + ", Celular: " + usuario.getCelular() + ", Email: " + usuario.getEmail());
-            JOptionPane.showMessageDialog(null, "Não ha usuário com esse CPF", "Buscar - ERRO", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Usuário encontrado", "Buscar", JOptionPane.INFORMATION_MESSAGE);
 
             dadosBusca[0][0] = usuario.getNome();
             dadosBusca[0][1] = usuario.getCpf();
@@ -44,13 +44,15 @@ public class CadastroUsuarioHash {
     }
 
     public static void excluirUsuario(String cpf) {
-        if (Adapter.myTabHash.containsKey(cpf)) {
-            Adapter.myTabHash.remove(cpf);
-            System.out.println("Usuário excluído com sucesso.");
-            JOptionPane.showMessageDialog(null, "Usuário excluído com sucesso.", "Excluir", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            System.out.println("Usuário não encontrado.");
-            JOptionPane.showMessageDialog(null, "Não ha usuário com esse CPF", "Buscar - ERRO", JOptionPane.ERROR_MESSAGE);
+
+            if (Adapter.myTabHash.containsKey(cpf)) {
+                Adapter.myTabHash.remove(cpf);
+                System.out.println("Usuário excluído com sucesso.");
+                JOptionPane.showMessageDialog(null, "Usuário excluído com sucesso.", "Excluir", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                System.out.println("Usuário não encontrado.");
+                JOptionPane.showMessageDialog(null, "Não ha usuário com esse CPF", "Buscar - ERRO", JOptionPane.ERROR_MESSAGE);
+
         }
     }
 

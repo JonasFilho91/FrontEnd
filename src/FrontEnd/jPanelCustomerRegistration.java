@@ -1,5 +1,6 @@
 package FrontEnd;
 
+import CPFvalidation.ValidarCampo;
 import TabelaHash.Adapter;
 import TabelaHash.CadastroUsuarioHash;
 import resources.Outros.BoxSize;
@@ -8,6 +9,8 @@ import resources.Outros.FonteText;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.Objects;
 
 public class jPanelCustomerRegistration extends JPanel{
@@ -62,8 +65,24 @@ public class jPanelCustomerRegistration extends JPanel{
         jFormattedTextFieldCPF.setFont(FonteText.getFonte_text());
         jFormattedTextFieldCPF.setSize(350,BoxSize.getHeightStandard());
         jFormattedTextFieldCPF.setLocation(80,txtCPF.getY() + txtCPF.getHeight() + 2);
-
         jFormattedTextFieldCPF.setText("");
+        jFormattedTextFieldCPF.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                super.keyReleased(e);
+                ValidarCampo.Validar(jFormattedTextFieldCPF);
+
+
+                //*String str;
+                //str = jFormattedTextFieldCPF.getText().substring(jFormattedTextFieldCPF.getText().length()-1,jFormattedTextFieldCPF.getText().length());
+                // if ((!str.matches("[0-9]"))) {
+                //    JOptionPane.showMessageDialog(null, "É permitido apenas Números de 0-9", "CPF - ERRO", JOptionPane.ERROR_MESSAGE);
+                //    jFormattedTextFieldCPF.setText("");}
+                }
+
+        });
+
+
         add(jFormattedTextFieldCPF);
 
         //Título Celular
@@ -132,22 +151,21 @@ public class jPanelCustomerRegistration extends JPanel{
         ButtonSalve.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if( (!Objects.equals(jFormattedTextFieldNome.getText(), "")) && (!Objects.equals(jFormattedTextFieldCPF.getText(), ""))) {
-                    CadastroUsuarioHash.cadastrarUsuario(jFormattedTextFieldNome.getText(),
-                            jFormattedTextFieldCPF.getText(),
-                            jFormattedTextFieldCelular.getText(),
-                            jFormattedTextFieldEmail.getText());
-                    Adapter.Update_Data();
-                    jFormattedTextFieldNome.setText("");
-                    jFormattedTextFieldCPF.setText("");
-                    jFormattedTextFieldCelular.setText("");
-                    jFormattedTextFieldEmail.setText("");
+                if( (!Objects.equals(jFormattedTextFieldNome.getText(), "")) && (ValidarCampo.Validar(jFormattedTextFieldCPF))) {
+                        CadastroUsuarioHash.cadastrarUsuario(jFormattedTextFieldNome.getText(),
+                                jFormattedTextFieldCPF.getText(),
+                                jFormattedTextFieldCelular.getText(),
+                                jFormattedTextFieldEmail.getText());
+                        Adapter.Update_Data();
+                        jFormattedTextFieldNome.setText("");
+                        jFormattedTextFieldCPF.setText("");
+                        jFormattedTextFieldCelular.setText("");
+                        jFormattedTextFieldEmail.setText("");
                 }else {
-                    JOptionPane.showMessageDialog(null, "Nome e CPF não podem estar em branco. \n Tente novamente", "CAMPOS OBRIGATÓRIOS", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "CPF em branco, faltando digitos ou com dígitos a mais!. \n Tente novamente", "CAMPOS OBRIGATÓRIOS", JOptionPane.ERROR_MESSAGE);
+
                 }
             }
         });
-
     }
-
 }

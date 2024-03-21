@@ -7,4 +7,5 @@ public class FonteText{
     public static Font getFonte_text() {
         return fonte_text_PLAIN;
     }
+
 }

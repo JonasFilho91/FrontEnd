@@ -31,7 +31,7 @@ public class CPFvalida {
             S6 = cpf.substring(5, 6); N6 = Integer.parseInt(S6);
             S7 = cpf.substring(6, 7); N7 = Integer.parseInt(S7);
             S8 = cpf.substring(7, 8); N8 = Integer.parseInt(S8);
-            S9 = cpf.substring(8, 9); N9 = Integer.parseInt(S9);
+            S9 = cpf.substring(8,9); N9 = Integer.parseInt(S9);
 
             verificador1 = (N1 * 10 + N2 * 9 + N3 * 8 + N4 * 7 + N5 * 6 + N6 * 5 + N7 * 4 + N8 * 3 + N9 * 2);
 
