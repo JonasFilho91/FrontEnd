@@ -1,6 +1,7 @@
-package TabelaHash;
+package FrontEnd.Table;
 
-import FrontEnd.Table.MyJTabModel;
+import TabelaHash.CadastroUsuarioHash;
+import TabelaHash.Usuario;
 
 import javax.swing.*;
 import java.util.Map;

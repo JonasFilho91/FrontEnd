@@ -1,7 +1,5 @@
 package FrontEnd.Table;
 
-import TabelaHash.Adapter;
-
 import javax.swing.table.AbstractTableModel;
 
 public class MyJTabModel extends AbstractTableModel{

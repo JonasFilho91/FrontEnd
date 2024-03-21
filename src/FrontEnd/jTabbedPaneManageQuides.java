@@ -1,7 +1,7 @@
 package FrontEnd;
 
+import FrontEnd.Table.Adapter;
 import FrontEnd.Table.MyJTabModel;
-import TabelaHash.Adapter;
 import TabelaHash.Usuario;
 import resources.Outros.TamanhoWindons;
 

@@ -2,7 +2,7 @@ package FrontEnd;
 
 import CPFvalidation.CPFvalida;
 import CPFvalidation.ValidarCampo;
-import TabelaHash.Adapter;
+import FrontEnd.Table.Adapter;
 import TabelaHash.CadastroUsuarioHash;
 import resources.Outros.BoxSize;
 import resources.Outros.FonteText;

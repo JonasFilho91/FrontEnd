@@ -1,5 +1,7 @@
 package TabelaHash;
 
+import FrontEnd.Table.Adapter;
+
 import javax.swing.*;
 
 public class CadastroUsuarioHash {
